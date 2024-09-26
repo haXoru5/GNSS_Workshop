@@ -102,6 +102,18 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IHXDFDPJ
 
+[Parameter1]
+Name=Title
+Value=IEEE GNSS Front End
+
+[Parameter2]
+Name=Revision
+Value=P1
+
+[Parameter3]
+Name=Author
+Value=Michael Zheng
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
