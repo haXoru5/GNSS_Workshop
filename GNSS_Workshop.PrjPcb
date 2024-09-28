@@ -142,29 +142,30 @@ UniqueID=619FF363-A11B-49B1-99BA-F676B08E0984
 Description=Variant of GNSS_Workshop
 AllowFabrication=0
 ParameterCount=0
-VariationCount=9
-Variation1=Designator=R3|UniqueId=\AYGPGHYI|Kind=1|AlternatePart= 
-Variation2=Designator=R4|UniqueId=\IBNZNUNM|Kind=1|AlternatePart= 
-Variation3=Designator=J10|UniqueId=\MHBZEEIX|Kind=1|AlternatePart= 
-Variation4=Designator=J11|UniqueId=\AYHJMFFR|Kind=1|AlternatePart= 
-Variation5=Designator=J4|UniqueId=\PBABGKDX|Kind=1|AlternatePart= 
-Variation6=Designator=R6|UniqueId=\TBNWLORO|Kind=1|AlternatePart= 
-Variation7=Designator=R5|UniqueId=\UYISTBDD|Kind=1|AlternatePart= 
+VariationCount=10
+Variation1=Designator=R7|UniqueId=\AYGPGHYI|Kind=1|AlternatePart= 
+Variation2=Designator=R8|UniqueId=\IBNZNUNM|Kind=1|AlternatePart= 
+Variation3=Designator=J8|UniqueId=\MHBZEEIX|Kind=1|AlternatePart= 
+Variation4=Designator=J9|UniqueId=\AYHJMFFR|Kind=1|AlternatePart= 
+Variation5=Designator=J5|UniqueId=\PBABGKDX|Kind=1|AlternatePart= 
+Variation6=Designator=R10|UniqueId=\TBNWLORO|Kind=1|AlternatePart= 
+Variation7=Designator=R9|UniqueId=\UYISTBDD|Kind=1|AlternatePart= 
 Variation8=Designator=C1|UniqueId=\HHPMYWMI|Kind=1|AlternatePart= 
-Variation9=Designator=R9|UniqueId=\YYYTIAYB|Kind=1|AlternatePart= 
+Variation9=Designator=J11|UniqueId=\QYEKZDOI|Kind=1|AlternatePart= 
+Variation10=Designator=R17|UniqueId=\IZMLMJKO|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [Parameter1]
-Name=Title
-Value=IEEE GNSS Front End
+Name=Author
+Value=Michael Zheng
 
 [Parameter2]
 Name=Revision
 Value=P1
 
 [Parameter3]
-Name=Author
-Value=Michael Zheng
+Name=Title
+Value=IEEE GNSS Front End
 
 [Configuration1]
 Name=Sources
@@ -1228,8 +1229,8 @@ UpdateToLatestRevision=1
 PartTypes=0
 ComponentLibIdentifierKind0=Library Name And Type
 ComponentLibraryIdentifier0=Symbols.SchLib
-ComponentDesignItemID0=GCM188L81H104KA57D
-ComponentSymbolReference0=GCM188L81H104KA57D
+ComponentDesignItemID0=GSB1C211110DS1HR
+ComponentSymbolReference0=GSB1C211110DS1HR
 ComponentUpdate0=1
 ComponentIsDeviceSheet0=0
 FullReplace=1
@@ -1245,7 +1246,7 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
-ParameterName0=Capacitance
+ParameterName0=Check_prices
 ParameterUpdate0=1
 ParameterName1=Comment
 ParameterUpdate1=1
@@ -1255,10 +1256,20 @@ ParameterName3=Description
 ParameterUpdate3=1
 ParameterName4=Library Reference
 ParameterUpdate4=1
+ParameterName5=MF
+ParameterUpdate5=1
+ParameterName6=MP
+ParameterUpdate6=1
+ParameterName7=Package
+ParameterUpdate7=1
+ParameterName8=SnapEDA_Link
+ParameterUpdate8=1
+ParameterName9=Value
+ParameterUpdate9=1
 ModelTypeGroup0=PCBLIB
 ModelTypeUpdate0=1
 ModelType0=PCBLIB
-ModelName0=CAP_MURATA_0603
+ModelName0=AMPHENOL_GSB1C211110DS1HR
 ModelUpdate0=1
 
 [DatabaseUpdateOptions]
