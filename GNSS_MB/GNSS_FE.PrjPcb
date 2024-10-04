@@ -46,6 +46,7 @@ CrossRefSheetEntries=0
 CrossRefFollowFromMainSettings=1
 XNetsSourceDestinationPrefixes=U, X
 XNetsDiscretesPrefixes=R, L, C, VD
+CurrentVariant=Variant of GNSS_FE
 
 [Preferences]
 PrefsVaultGUID=
@@ -120,7 +121,24 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document5]
-DocumentPath=GNSS_Workshop.pdf
+DocumentPath=GNSS_FE.pdf
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document6]
+DocumentPath=GNSS_FE.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -142,16 +160,16 @@ Description=Variant of GNSS_FE
 AllowFabrication=0
 ParameterCount=0
 VariationCount=10
-Variation1=Designator=R7|UniqueId=\AYGPGHYI|Kind=1|AlternatePart= 
-Variation2=Designator=R8|UniqueId=\IBNZNUNM|Kind=1|AlternatePart= 
-Variation3=Designator=J8|UniqueId=\MHBZEEIX|Kind=1|AlternatePart= 
-Variation4=Designator=J9|UniqueId=\AYHJMFFR|Kind=1|AlternatePart= 
-Variation5=Designator=J5|UniqueId=\PBABGKDX|Kind=1|AlternatePart= 
-Variation6=Designator=R10|UniqueId=\TBNWLORO|Kind=1|AlternatePart= 
-Variation7=Designator=R9|UniqueId=\UYISTBDD|Kind=1|AlternatePart= 
-Variation8=Designator=C1|UniqueId=\HHPMYWMI|Kind=1|AlternatePart= 
-Variation9=Designator=J11|UniqueId=\QYEKZDOI|Kind=1|AlternatePart= 
-Variation10=Designator=R17|UniqueId=\IZMLMJKO|Kind=1|AlternatePart= 
+Variation1=Designator=R5|UniqueId=\AYGPGHYI|Kind=1|AlternatePart= 
+Variation2=Designator=R6|UniqueId=\IBNZNUNM|Kind=1|AlternatePart= 
+Variation3=Designator=R10|UniqueId=\MDYQCJKQ|Kind=1|AlternatePart= 
+Variation4=Designator=C2|UniqueId=\NXTHNFPG|Kind=1|AlternatePart= 
+Variation5=Designator=R7|UniqueId=\LLWBTOGZ|Kind=1|AlternatePart= 
+Variation6=Designator=C3|UniqueId=\WKCRVJOM|Kind=1|AlternatePart= 
+Variation7=Designator=C1|UniqueId=\ZASZXVFO|Kind=1|AlternatePart= 
+Variation8=Designator=R1|UniqueId=\OUVTHVQE|Kind=1|AlternatePart= 
+Variation9=Designator=R8|UniqueId=\VQLDKNVL|Kind=1|AlternatePart= 
+Variation10=Designator=R9|UniqueId=\PWURGVCB|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [Parameter1]
