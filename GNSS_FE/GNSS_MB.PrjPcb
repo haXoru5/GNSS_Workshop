@@ -120,7 +120,24 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document5]
-DocumentPath=GNSS_Workshop.pdf
+DocumentPath=GNSS_MB.pdf
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document6]
+DocumentPath=GNSS_MB.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -141,17 +158,15 @@ UniqueID=619FF363-A11B-49B1-99BA-F676B08E0984
 Description=Variant of GNSS_MB
 AllowFabrication=0
 ParameterCount=0
-VariationCount=10
-Variation1=Designator=R7|UniqueId=\AYGPGHYI|Kind=1|AlternatePart= 
-Variation2=Designator=R8|UniqueId=\IBNZNUNM|Kind=1|AlternatePart= 
-Variation3=Designator=J8|UniqueId=\MHBZEEIX|Kind=1|AlternatePart= 
-Variation4=Designator=J9|UniqueId=\AYHJMFFR|Kind=1|AlternatePart= 
-Variation5=Designator=J5|UniqueId=\PBABGKDX|Kind=1|AlternatePart= 
-Variation6=Designator=R10|UniqueId=\TBNWLORO|Kind=1|AlternatePart= 
-Variation7=Designator=R9|UniqueId=\UYISTBDD|Kind=1|AlternatePart= 
-Variation8=Designator=C1|UniqueId=\HHPMYWMI|Kind=1|AlternatePart= 
-Variation9=Designator=J11|UniqueId=\QYEKZDOI|Kind=1|AlternatePart= 
-Variation10=Designator=R17|UniqueId=\IZMLMJKO|Kind=1|AlternatePart= 
+VariationCount=8
+Variation1=Designator=R7|UniqueId=\YWGKWPWQ|Kind=1|AlternatePart= 
+Variation2=Designator=R8|UniqueId=\QNRXKRZT|Kind=1|AlternatePart= 
+Variation3=Designator=J6|UniqueId=\MHBZEEIX|Kind=1|AlternatePart= 
+Variation4=Designator=J7|UniqueId=\AYHJMFFR|Kind=1|AlternatePart= 
+Variation5=Designator=J2|UniqueId=\PBABGKDX|Kind=1|AlternatePart= 
+Variation6=Designator=R11|UniqueId=\TBNWLORO|Kind=1|AlternatePart= 
+Variation7=Designator=R10|UniqueId=\UYISTBDD|Kind=1|AlternatePart= 
+Variation8=Designator=C8|UniqueId=\HHPMYWMI|Kind=1|AlternatePart= 
 ParamVariationCount=0
 
 [Parameter1]
@@ -1258,8 +1273,8 @@ UpdateToLatestRevision=1
 PartTypes=0
 ComponentLibIdentifierKind0=Library Name And Type
 ComponentLibraryIdentifier0=Symbols.SchLib
-ComponentDesignItemID0=GSB1C211110DS1HR
-ComponentSymbolReference0=GSB1C211110DS1HR
+ComponentDesignItemID0=FT230X
+ComponentSymbolReference0=FT230X
 ComponentUpdate0=1
 ComponentIsDeviceSheet0=0
 FullReplace=1
@@ -1275,31 +1290,14 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
-ParameterName0=Check_prices
+ParameterName0=Comment
 ParameterUpdate0=1
-ParameterName1=Comment
+ParameterName1=Component Kind
 ParameterUpdate1=1
-ParameterName2=Component Kind
+ParameterName2=Description
 ParameterUpdate2=1
-ParameterName3=Description
+ParameterName3=Library Reference
 ParameterUpdate3=1
-ParameterName4=Library Reference
-ParameterUpdate4=1
-ParameterName5=MF
-ParameterUpdate5=1
-ParameterName6=MP
-ParameterUpdate6=1
-ParameterName7=Package
-ParameterUpdate7=1
-ParameterName8=SnapEDA_Link
-ParameterUpdate8=1
-ParameterName9=Value
-ParameterUpdate9=1
-ModelTypeGroup0=PCBLIB
-ModelTypeUpdate0=1
-ModelType0=PCBLIB
-ModelName0=AMPHENOL_GSB1C211110DS1HR
-ModelUpdate0=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
