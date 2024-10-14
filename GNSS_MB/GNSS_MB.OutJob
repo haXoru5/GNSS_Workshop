@@ -2,9 +2,9 @@
 Version=1.0
 
 [PublishSettings]
-OutputFilePath2=C:\Users\Michael\Documents\GitHub\GNSS_Workshop\GNSS_FE\.PDF
+OutputFilePath2=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\.PDF
 ReleaseManaged2=0
-OutputBasePath2=C:\Users\Michael\Documents\GitHub\GNSS_Workshop\GNSS_FE\
+OutputBasePath2=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\
 OutputPathMedia2=
 OutputPathMediaValue2=
 OutputPathOutputer2=[Output Type]
@@ -81,7 +81,7 @@ WmvVideoCodecName4=Windows Media Video V7
 WmvQuality4=80
 
 [GeneratedFilesSettings]
-RelativeOutputPath2=C:\Users\Michael\Documents\GitHub\GNSS_Workshop\GNSS_FE\.PDF
+RelativeOutputPath2=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\.PDF
 OpenOutputs2=1
 RelativeOutputPath3=
 OpenOutputs3=1
