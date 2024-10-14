@@ -1,0 +1,795 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2024-10-14</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">19:11:24</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc" class="file"><acronym title="C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc">C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">141</td></tr>
+</table>
+</td>
+</table><a name="IDYMYSRS4QT3ZKNVTYWGI2ONFFXCQ4ILYO5JCSCFB50BWEPKGVNZTI"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZN5SBHMG1N3POPPJPAZ5EV2PWOXQC3ZOWFEZEADGWNXLIYFVU45P">Clearance Constraint (Gap=0.127mm) (InNetClass('RF')),(InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGYULDJXPR1R3MN1SY4M2I23SDEEHXWZYX2TARQIKV1OCPEUAB5AJ">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">23</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZHV2J3GT4ZWGFFSGEIOL5XNYLP0TWFKI0FTWYYD5A2155ABOJKXC">Clearance Constraint (Gap=0.127mm) (InDifferentialPairClass('USB')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVA5ARLBHFXS2EY1TI32ATCECALXVHR0JS1AS11N4MJJPQ51T55LI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUZALYE1ISPRSOHNR44XXXMHVRCCJSYLQOQV5MRDYOZJUONP2WK5J">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5JEEZ30ILZZ1I4LJEGH0VCZD4CRL0EO2OHJTQFDCE0BBBTDCKMPH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWZHBFU145VLOBG3JNOVMQ0UH5EW4EGPRATXIFRHZGQZWSJVIIRDH">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMRP5BLL431G4HCUMMAT2VIQEZN4KS1M4FXYBCGNINWIPTTYOISXB">Width Constraint (Min=0.254mm) (Max=0.5mm) (Preferred=0.5mm) (InNet('VCC') Or InNet('+5') Or InNet('VCCIO') Or InNet('NetC5_1'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLWN3ACN3XISYK4P3BHUK2FTJAETYC4V14OHNENOG3APWPTGHBZ4B">Width Constraint (Min=0.18mm) (Max=0.228mm) (Preferred=0.228mm) (InNetClass('RF'))</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIEZOYR0FNFAWCYIPZHGBKHS1YNO1YITXLXZSPXLH5U4ZHUYHQGKM">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKCRNFUOZF5SXIAK24ICBWEV1OJAW2BBDZUWLGUDZHVJF1J1QJCFH">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4ITFI1F1AKXAD5AP0IMQ03OYBMQ1DCG0XX3B54KZJ2Z3Y2BAOT1I">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDC01RZAI2MIDPMAGEPT5UPZX0IHASBPLS5QZWMGLO4HR0LGH30VP">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">52</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVQFGRHYWYNOIE2YEDFEIWEMQ5EF3CRYVAM5XNNLT5MVK0KR4GJGG">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">57</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUNAVL2VPGOV5OGPUZCABFJIXPM51QRR12XZNK5MN5DIDIMIZCMPL">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAPG4W5ZGRH1EDSFJDI5WKDLN4LZTXWCAL42SNUF5JCFOCUYODXW">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWJ4YWV2KVFU0DFJ0DDX3CDVHOGKCLLJEJA0LYJN43FPKBUB0VOTB">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">141</td>
+</tr>
+</table><br><a name="IDGYULDJXPR1R3MN1SY4M2I23SDEEHXWZYX2TARQIKV1OCPEUAB5AJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A1(47.35mm,24.525mm) on Multi-Layer And Pad J1-A4(47.35mm,25.375mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2760.119mil|Location2.Y=2771.369mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2760.119mil|Location2.Y=2771.369mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A1(47.35mm,24.525mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A12(47.35mm,30.475mm) on Multi-Layer And Pad J1-A9(47.35mm,29.625mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2960.915mil|Location2.Y=2972.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2960.915mil|Location2.Y=2972.165mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A12(47.35mm,30.475mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A4(47.35mm,25.375mm) on Multi-Layer And Pad J1-A5(47.35mm,26.225mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2760.128mil|Location2.Y=2771.378mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2760.128mil|Location2.Y=2771.378mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A4(47.35mm,25.375mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2793.592mil|Location2.Y=2804.842mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2793.592mil|Location2.Y=2804.842mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A5(47.35mm,26.225mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A8(47.35mm,28.775mm) on Multi-Layer And Pad J1-A9(47.35mm,29.625mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2927.441mil|Location2.Y=2938.691mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2927.441mil|Location2.Y=2938.691mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A8(47.35mm,28.775mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2960.906mil|Location2.Y=2972.156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.946mil|Location2.X=2869.196mil|Location1.Y=2960.906mil|Location2.Y=2972.156mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-A9(47.35mm,29.625mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B1(48.7mm,30.475mm) on Multi-Layer And Pad J1-B4(48.7mm,29.625mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2960.914mil|Location2.Y=2972.164mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2960.914mil|Location2.Y=2972.164mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B1(48.7mm,30.475mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B12(48.7mm,24.525mm) on Multi-Layer And Pad J1-B9(48.7mm,25.375mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2760.12mil|Location2.Y=2771.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2760.12mil|Location2.Y=2771.37mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B12(48.7mm,24.525mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B4(48.7mm,29.625mm) on Multi-Layer And Pad J1-B5(48.7mm,28.775mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2960.907mil|Location2.Y=2972.157mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2960.907mil|Location2.Y=2972.157mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B4(48.7mm,29.625mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2927.443mil|Location2.Y=2938.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2927.443mil|Location2.Y=2938.693mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B5(48.7mm,28.775mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B8(48.7mm,26.225mm) on Multi-Layer And Pad J1-B9(48.7mm,25.375mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2793.591mil|Location2.Y=2804.841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2793.591mil|Location2.Y=2804.841mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B8(48.7mm,26.225mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2760.126mil|Location2.Y=2771.376mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2912.265mil|Location2.X=2923.515mil|Location1.Y=2760.126mil|Location2.Y=2771.376mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-B9(48.7mm,25.375mm) on Multi-Layer And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2078.765mil|Location2.X=2085.014mil|Location1.Y=2027.387mil|Location2.Y=2033.636mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2078.765mil|Location2.X=2085.014mil|Location1.Y=2027.387mil|Location2.Y=2033.636mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.2mm) Between Pad J5-1(27.48mm,6.275mm) on Multi-Layer And Track (23.7mm,3.4mm)(34.523mm,14.223mm) on POWER </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.84mil|Location2.X=2869.09mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.84mil|Location2.X=2869.09mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Region (0 hole(s)) TOP And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.84mil|Location2.X=2869.09mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2857.84mil|Location2.X=2869.09mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True">Clearance Constraint: (0.15mm &lt; 0.254mm) Between Region (0 hole(s)) TOP And Region (0 hole(s)) TOP </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVA5ARLBHFXS2EY1TI32ATCECALXVHR0JS1AS11N4MJJPQ51T55LI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2037.728mil|Location2.X=2102.826mil|Location1.Y=2009.576mil|Location2.Y=2074.674mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2037.728mil|Location2.X=2102.826mil|Location1.Y=2009.576mil|Location2.Y=2074.674mil|Absolute=True">Short-Circuit Constraint: Between Pad J5-1(27.48mm,6.275mm) on Multi-Layer And Track (23.7mm,3.4mm)(34.523mm,14.223mm) on POWER Location : [X = 52.585mm][Y = 51.87mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUZALYE1ISPRSOHNR44XXXMHVRCCJSYLQOQV5MRDYOZJUONP2WK5J"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2848.425mil|Location2.X=2879.921mil|Location1.Y=2766.732mil|Location2.Y=2965.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2848.425mil|Location2.X=2879.921mil|Location1.Y=2766.732mil|Location2.Y=2965.551mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_1 Between Pad J1-A4(47.35mm,25.375mm) on Multi-Layer And Pad J1-A9(47.35mm,29.625mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLWN3ACN3XISYK4P3BHUK2FTJAETYC4V14OHNENOG3APWPTGHBZ4B"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=0.18mm) (Max=0.228mm) (Preferred=0.228mm) (InNetClass('RF'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1292.24mil|Location2.X=1311.648mil|Location1.Y=3194.996mil|Location2.Y=3207.776mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1292.24mil|Location2.X=1311.648mil|Location1.Y=3194.996mil|Location2.Y=3207.776mil|Absolute=True">Width Constraint: Track (7.55mm,35.98mm)(7.6mm,36.03mm) on TOP Actual Width = 0.228mm (8.9764mil), Target Width = 0.2281mm (8.9822mil)</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDKCRNFUOZF5SXIAK24ICBWEV1OJAW2BBDZUWLGUDZHVJF1J1QJCFH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1236.845mil|Location1.Y=1861.58mil|Location2.Y=2020.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1236.845mil|Location1.Y=1861.58mil|Location2.Y=2020.31mil|Absolute=True">Hole Size Constraint: (4mm &gt; 2.54mm) Pad Free-(4mm,4mm) on Multi-Layer Actual Hole Size = 4mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1236.845mil|Location1.Y=3711.974mil|Location2.Y=3870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1078.115mil|Location2.X=1236.845mil|Location1.Y=3711.974mil|Location2.Y=3870.704mil|Absolute=True">Hole Size Constraint: (4mm &gt; 2.54mm) Pad Free-(4mm,51mm) on Multi-Layer Actual Hole Size = 4mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.509mil|Location2.X=3087.239mil|Location1.Y=1861.58mil|Location2.Y=2020.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.509mil|Location2.X=3087.239mil|Location1.Y=1861.58mil|Location2.Y=2020.31mil|Absolute=True">Hole Size Constraint: (4mm &gt; 2.54mm) Pad Free-(51mm,4mm) on Multi-Layer Actual Hole Size = 4mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.509mil|Location2.X=3087.239mil|Location1.Y=3711.974mil|Location2.Y=3870.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.509mil|Location2.X=3087.239mil|Location1.Y=3711.974mil|Location2.Y=3870.704mil|Absolute=True">Hole Size Constraint: (4mm &gt; 2.54mm) Pad Free-(51mm,51mm) on Multi-Layer Actual Hole Size = 4mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDC01RZAI2MIDPMAGEPT5UPZX0IHASBPLS5QZWMGLO4HR0LGH30VP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1355.005mil|Location2.X=1366.255mil|Location1.Y=2844.312mil|Location2.Y=2855.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1355.005mil|Location2.X=1366.255mil|Location1.Y=2844.312mil|Location2.Y=2855.562mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.017mm &lt; 0.254mm) Between Pad C9-1(8.72mm,27.5mm) on TOP And Pad C9-2(9.6mm,27.5mm) on TOP [Top Solder] Mask Sliver [0.017mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A1(47.35mm,24.525mm) on Multi-Layer And Pad J1-A4(47.35mm,25.375mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2724.328mil|Location2.Y=2735.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2724.328mil|Location2.Y=2735.578mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J1-A1(47.35mm,24.525mm) on Multi-Layer And Pad J1-SH1(47.85mm,23.18mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm] / [Bottom Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A12(47.35mm,30.475mm) on Multi-Layer And Pad J1-A9(47.35mm,29.625mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2996.706mil|Location2.Y=3007.956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2996.706mil|Location2.Y=3007.956mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J1-A12(47.35mm,30.475mm) on Multi-Layer And Pad J1-SH2(47.85mm,31.82mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm] / [Bottom Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A4(47.35mm,25.375mm) on Multi-Layer And Pad J1-A5(47.35mm,26.225mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2827.052mil|Location2.Y=2838.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2827.052mil|Location2.Y=2838.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A5(47.35mm,26.225mm) on Multi-Layer And Pad J1-A6(47.35mm,27.075mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2860.517mil|Location2.Y=2871.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2860.517mil|Location2.Y=2871.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A6(47.35mm,27.075mm) on Multi-Layer And Pad J1-A7(47.35mm,27.925mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2893.981mil|Location2.Y=2905.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2893.981mil|Location2.Y=2905.231mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A7(47.35mm,27.925mm) on Multi-Layer And Pad J1-A8(47.35mm,28.775mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2858.548mil|Location2.X=2869.798mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-A8(47.35mm,28.775mm) on Multi-Layer And Pad J1-A9(47.35mm,29.625mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2960.91mil|Location2.Y=2972.16mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B1(48.7mm,30.475mm) on Multi-Layer And Pad J1-B4(48.7mm,29.625mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2996.706mil|Location2.Y=3007.956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2996.706mil|Location2.Y=3007.956mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J1-B1(48.7mm,30.475mm) on Multi-Layer And Pad J1-SH2(47.85mm,31.82mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm] / [Bottom Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2760.123mil|Location2.Y=2771.373mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B12(48.7mm,24.525mm) on Multi-Layer And Pad J1-B9(48.7mm,25.375mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2724.328mil|Location2.Y=2735.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2724.328mil|Location2.Y=2735.578mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J1-B12(48.7mm,24.525mm) on Multi-Layer And Pad J1-SH1(47.85mm,23.18mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm] / [Bottom Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2927.446mil|Location2.Y=2938.696mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B4(48.7mm,29.625mm) on Multi-Layer And Pad J1-B5(48.7mm,28.775mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2893.981mil|Location2.Y=2905.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2893.981mil|Location2.Y=2905.231mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B5(48.7mm,28.775mm) on Multi-Layer And Pad J1-B6(48.7mm,27.925mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2860.517mil|Location2.Y=2871.767mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2860.517mil|Location2.Y=2871.767mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B6(48.7mm,27.925mm) on Multi-Layer And Pad J1-B7(48.7mm,27.075mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2827.052mil|Location2.Y=2838.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2827.052mil|Location2.Y=2838.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B7(48.7mm,27.075mm) on Multi-Layer And Pad J1-B8(48.7mm,26.225mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2911.698mil|Location2.X=2922.948mil|Location1.Y=2793.588mil|Location2.Y=2804.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.254mm) Between Pad J1-B8(48.7mm,26.225mm) on Multi-Layer And Pad J1-B9(48.7mm,25.375mm) on Multi-Layer [Top Solder] Mask Sliver [0.05mm] / [Bottom Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.021mil|Location2.X=1319.271mil|Location1.Y=2880.202mil|Location2.Y=2891.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1308.021mil|Location2.X=1319.271mil|Location1.Y=2880.202mil|Location2.Y=2891.452mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.207mm &lt; 0.254mm) Between Pad L1-1(7.5mm,27.54mm) on TOP And Pad L1-2(7.5mm,28.46mm) on TOP [Top Solder] Mask Sliver [0.207mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1444.178mil|Location2.X=1455.428mil|Location1.Y=2425.414mil|Location2.Y=2436.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1444.178mil|Location2.X=1455.428mil|Location1.Y=2425.414mil|Location2.Y=2436.664mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP1-1(10.95mm,17mm) on TOP And Pad MP1-1(12.35mm,17mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.028mil|Location2.X=1527.278mil|Location1.Y=2468.847mil|Location2.Y=2480.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.028mil|Location2.X=1527.278mil|Location1.Y=2468.847mil|Location2.Y=2480.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP1-1(12.35mm,17mm) on TOP And Pad MP1-1(14mm,17mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1575.084mil|Location2.X=1586.334mil|Location1.Y=2468.847mil|Location2.Y=2480.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1575.084mil|Location2.X=1586.334mil|Location1.Y=2468.847mil|Location2.Y=2480.097mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP1-1(14mm,17mm) on TOP And Pad MP1-1(15.65mm,17mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1646.934mil|Location2.X=1658.184mil|Location1.Y=2425.414mil|Location2.Y=2436.664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1646.934mil|Location2.X=1658.184mil|Location1.Y=2425.414mil|Location2.Y=2436.664mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP1-1(15.65mm,17mm) on TOP And Pad MP1-1(17.05mm,17mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.91mil|Location2.X=1968.16mil|Location1.Y=2759.139mil|Location2.Y=2770.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.91mil|Location2.X=1968.16mil|Location1.Y=2759.139mil|Location2.Y=2770.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP2-1(25mm,24.45mm) on TOP And Pad MP2-1(25mm,25.85mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.91mil|Location2.X=1968.16mil|Location1.Y=2830.989mil|Location2.Y=2842.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1956.91mil|Location2.X=1968.16mil|Location1.Y=2830.989mil|Location2.Y=2842.239mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP2-1(25mm,25.85mm) on TOP And Pad MP2-1(25mm,27.5mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.343mil|Location2.X=2011.593mil|Location1.Y=2890.044mil|Location2.Y=2901.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.343mil|Location2.X=2011.593mil|Location1.Y=2890.044mil|Location2.Y=2901.294mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP2-1(25mm,27.5mm) on TOP And Pad MP2-1(25mm,29.15mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.343mil|Location2.X=2011.593mil|Location1.Y=2961.895mil|Location2.Y=2973.145mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2000.343mil|Location2.X=2011.593mil|Location1.Y=2961.895mil|Location2.Y=2973.145mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP2-1(25mm,29.15mm) on TOP And Pad MP2-1(25mm,30.55mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1444.178mil|Location2.X=1455.428mil|Location1.Y=3059.399mil|Location2.Y=3070.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1444.178mil|Location2.X=1455.428mil|Location1.Y=3059.399mil|Location2.Y=3070.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP3-1(10.95mm,32mm) on TOP And Pad MP3-1(12.35mm,32mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.028mil|Location2.X=1527.278mil|Location1.Y=3059.399mil|Location2.Y=3070.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1516.028mil|Location2.X=1527.278mil|Location1.Y=3059.399mil|Location2.Y=3070.649mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP3-1(12.35mm,32mm) on TOP And Pad MP3-1(14mm,32mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1575.084mil|Location2.X=1586.334mil|Location1.Y=3015.966mil|Location2.Y=3027.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1575.084mil|Location2.X=1586.334mil|Location1.Y=3015.966mil|Location2.Y=3027.216mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP3-1(14mm,32mm) on TOP And Pad MP3-1(15.65mm,32mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1646.934mil|Location2.X=1658.184mil|Location1.Y=3015.966mil|Location2.Y=3027.216mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1646.934mil|Location2.X=1658.184mil|Location1.Y=3015.966mil|Location2.Y=3027.216mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP3-1(15.65mm,32mm) on TOP And Pad MP3-1(17.05mm,32mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1169.509mil|Location2.X=1180.759mil|Location1.Y=2581.974mil|Location2.Y=2593.224mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1169.509mil|Location2.X=1180.759mil|Location1.Y=2581.974mil|Location2.Y=2593.224mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP4-1(5mm,19.95mm) on TOP And Pad MP4-1(5mm,21.35mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1169.509mil|Location2.X=1180.759mil|Location1.Y=2653.824mil|Location2.Y=2665.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1169.509mil|Location2.X=1180.759mil|Location1.Y=2653.824mil|Location2.Y=2665.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP4-1(5mm,21.35mm) on TOP And Pad MP4-1(5mm,23mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1212.942mil|Location2.X=1224.192mil|Location1.Y=2712.879mil|Location2.Y=2724.129mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1212.942mil|Location2.X=1224.192mil|Location1.Y=2712.879mil|Location2.Y=2724.129mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad MP4-1(5mm,23mm) on TOP And Pad MP4-1(5mm,24.65mm) on TOP [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1212.942mil|Location2.X=1224.192mil|Location1.Y=2784.729mil|Location2.Y=2795.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1212.942mil|Location2.X=1224.192mil|Location1.Y=2784.729mil|Location2.Y=2795.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad MP4-1(5mm,24.65mm) on TOP And Pad MP4-1(5mm,26.05mm) on TOP [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2579.021mil|Location2.Y=2590.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2579.021mil|Location2.Y=2590.271mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-1(21.9mm,19.8mm) on TOP And Pad U2-2(21.9mm,20.9mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2882.17mil|Location2.Y=2893.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2882.17mil|Location2.Y=2893.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-10(12.4mm,28.6mm) on TOP And Pad U2-11(12.4mm,27.5mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2838.863mil|Location2.Y=2850.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2838.863mil|Location2.Y=2850.113mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-11(12.4mm,27.5mm) on TOP And Pad U2-12(12.4mm,26.4mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2795.556mil|Location2.Y=2806.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2795.556mil|Location2.Y=2806.806mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-12(12.4mm,26.4mm) on TOP And Pad U2-13(12.4mm,25.3mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2752.249mil|Location2.Y=2763.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2752.249mil|Location2.Y=2763.499mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-13(12.4mm,25.3mm) on TOP And Pad U2-14(12.4mm,24.2mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2708.942mil|Location2.Y=2720.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2708.942mil|Location2.Y=2720.192mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-14(12.4mm,24.2mm) on TOP And Pad U2-15(12.4mm,23.1mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2665.635mil|Location2.Y=2676.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2665.635mil|Location2.Y=2676.885mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-15(12.4mm,23.1mm) on TOP And Pad U2-16(12.4mm,22mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2622.328mil|Location2.Y=2633.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2622.328mil|Location2.Y=2633.578mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-16(12.4mm,22mm) on TOP And Pad U2-17(12.4mm,20.9mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2579.021mil|Location2.Y=2590.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1443.131mil|Location2.X=1454.381mil|Location1.Y=2579.021mil|Location2.Y=2590.271mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-17(12.4mm,20.9mm) on TOP And Pad U2-18(12.4mm,19.8mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2622.328mil|Location2.Y=2633.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2622.328mil|Location2.Y=2633.578mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-2(21.9mm,20.9mm) on TOP And Pad U2-3(21.9mm,22mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2665.635mil|Location2.Y=2676.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2665.635mil|Location2.Y=2676.885mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-3(21.9mm,22mm) on TOP And Pad U2-4(21.9mm,23.1mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2708.942mil|Location2.Y=2720.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2708.942mil|Location2.Y=2720.192mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-4(21.9mm,23.1mm) on TOP And Pad U2-5(21.9mm,24.2mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2752.249mil|Location2.Y=2763.499mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2752.249mil|Location2.Y=2763.499mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-5(21.9mm,24.2mm) on TOP And Pad U2-6(21.9mm,25.3mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2795.556mil|Location2.Y=2806.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2795.556mil|Location2.Y=2806.806mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-6(21.9mm,25.3mm) on TOP And Pad U2-7(21.9mm,26.4mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2838.863mil|Location2.Y=2850.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2838.863mil|Location2.Y=2850.113mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-7(21.9mm,26.4mm) on TOP And Pad U2-8(21.9mm,27.5mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2882.17mil|Location2.Y=2893.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1817.147mil|Location2.X=1828.397mil|Location1.Y=2882.17mil|Location2.Y=2893.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad U2-8(21.9mm,27.5mm) on TOP And Pad U2-9(21.9mm,28.6mm) on TOP [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVQFGRHYWYNOIE2YEDFEIWEMQ5EF3CRYVAM5XNNLT5MVK0KR4GJGG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1649.83mil|Location2.X=1661.08mil|Location1.Y=3187.507mil|Location2.Y=3198.757mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1649.83mil|Location2.X=1661.08mil|Location1.Y=3187.507mil|Location2.Y=3198.757mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.153mm &lt; 0.254mm) Between Arc (16.325mm,35.875mm) on Top Overlay And Pad TP17-1(17.7mm,35.575mm) on TOP [Top Overlay] to [Top Solder] clearance [0.153mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1815.241mil|Location2.X=1826.491mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1815.241mil|Location2.X=1826.491mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Pad C10-1(20.35mm,30mm) on TOP And Track (12.3mm,29.25mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1834.926mil|Location2.X=1846.176mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1834.926mil|Location2.X=1846.176mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Pad C10-2(21.85mm,30mm) on TOP And Track (12.3mm,29.25mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1860.517mil|Location2.X=1871.767mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1860.517mil|Location2.X=1871.767mil|Location1.Y=2936.796mil|Location2.Y=2948.046mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Pad C10-2(21.85mm,30mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1831.973mil|Location2.X=1843.223mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1831.973mil|Location2.X=1843.223mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-1(21.8mm,42.8mm) on TOP And Track (21.1mm,40.55mm)(21.1mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1836.895mil|Location2.X=1848.145mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1836.895mil|Location2.X=1848.145mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D1-1(21.8mm,42.8mm) on TOP And Track (21.1mm,43.45mm)(22.5mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1873.312mil|Location2.X=1884.562mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1873.312mil|Location2.X=1884.562mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-1(21.8mm,42.8mm) on TOP And Track (22.5mm,40.55mm)(22.5mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1831.973mil|Location2.X=1843.223mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1831.973mil|Location2.X=1843.223mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-2(21.8mm,41.2mm) on TOP And Track (21.1mm,40.55mm)(21.1mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1868.391mil|Location2.X=1879.641mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1868.391mil|Location2.X=1879.641mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D1-2(21.8mm,41.2mm) on TOP And Track (21.1mm,40.55mm)(22.5mm,40.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1873.312mil|Location2.X=1884.562mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1873.312mil|Location2.X=1884.562mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D1-2(21.8mm,41.2mm) on TOP And Track (22.5mm,40.55mm)(22.5mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1768.981mil|Location2.X=1780.231mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1768.981mil|Location2.X=1780.231mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-1(20.2mm,42.8mm) on TOP And Track (19.5mm,40.55mm)(19.5mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1773.903mil|Location2.X=1785.153mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1773.903mil|Location2.X=1785.153mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D2-1(20.2mm,42.8mm) on TOP And Track (19.5mm,43.45mm)(20.9mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1810.32mil|Location2.X=1821.57mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1810.32mil|Location2.X=1821.57mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-1(20.2mm,42.8mm) on TOP And Track (20.9mm,40.55mm)(20.9mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1768.981mil|Location2.X=1780.231mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1768.981mil|Location2.X=1780.231mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-2(20.2mm,41.2mm) on TOP And Track (19.5mm,40.55mm)(19.5mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1805.399mil|Location2.X=1816.649mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1805.399mil|Location2.X=1816.649mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D2-2(20.2mm,41.2mm) on TOP And Track (19.5mm,40.55mm)(20.9mm,40.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1810.32mil|Location2.X=1821.57mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1810.32mil|Location2.X=1821.57mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D2-2(20.2mm,41.2mm) on TOP And Track (20.9mm,40.55mm)(20.9mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1580.005mil|Location2.X=1591.255mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1580.005mil|Location2.X=1591.255mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-1(15.4mm,42.8mm) on TOP And Track (14.7mm,40.55mm)(14.7mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1584.926mil|Location2.X=1596.176mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1584.926mil|Location2.X=1596.176mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D3-1(15.4mm,42.8mm) on TOP And Track (14.7mm,43.45mm)(16.1mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.343mil|Location2.X=1632.593mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.343mil|Location2.X=1632.593mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-1(15.4mm,42.8mm) on TOP And Track (16.1mm,40.55mm)(16.1mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1580.005mil|Location2.X=1591.255mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1580.005mil|Location2.X=1591.255mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-2(15.4mm,41.2mm) on TOP And Track (14.7mm,40.55mm)(14.7mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1616.422mil|Location2.X=1627.672mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1616.422mil|Location2.X=1627.672mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D3-2(15.4mm,41.2mm) on TOP And Track (14.7mm,40.55mm)(16.1mm,40.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.343mil|Location2.X=1632.593mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1621.343mil|Location2.X=1632.593mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D3-2(15.4mm,41.2mm) on TOP And Track (16.1mm,40.55mm)(16.1mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1642.997mil|Location2.X=1654.247mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1642.997mil|Location2.X=1654.247mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-1(17mm,42.8mm) on TOP And Track (16.3mm,40.55mm)(16.3mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1647.918mil|Location2.X=1659.168mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1647.918mil|Location2.X=1659.168mil|Location1.Y=3482.564mil|Location2.Y=3493.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D4-1(17mm,42.8mm) on TOP And Track (16.3mm,43.45mm)(17.7mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1684.336mil|Location2.X=1695.586mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1684.336mil|Location2.X=1695.586mil|Location1.Y=3447.131mil|Location2.Y=3458.381mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-1(17mm,42.8mm) on TOP And Track (17.7mm,40.55mm)(17.7mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1642.997mil|Location2.X=1654.247mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1642.997mil|Location2.X=1654.247mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-2(17mm,41.2mm) on TOP And Track (16.3mm,40.55mm)(16.3mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1679.414mil|Location2.X=1690.664mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1679.414mil|Location2.X=1690.664mil|Location1.Y=3380.202mil|Location2.Y=3391.452mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad D4-2(17mm,41.2mm) on TOP And Track (16.3mm,40.55mm)(17.7mm,40.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1684.336mil|Location2.X=1695.586mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1684.336mil|Location2.X=1695.586mil|Location1.Y=3384.139mil|Location2.Y=3395.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad D4-2(17mm,41.2mm) on TOP And Track (17.7mm,40.55mm)(17.7mm,43.45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1547.869mil|Location2.X=1555.536mil|Location1.Y=2431.206mil|Location2.Y=2438.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1547.869mil|Location2.X=1555.536mil|Location1.Y=2431.206mil|Location2.Y=2438.873mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad MP1-1(14mm,17mm) on TOP And Text "R10" (15.537mm,13.046mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1582.781mil|Location2.X=1590.447mil|Location1.Y=2443.19mil|Location2.Y=2450.856mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1582.781mil|Location2.X=1590.447mil|Location1.Y=2443.19mil|Location2.Y=2450.856mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad MP1-1(15.65mm,17mm) on TOP And Text "R10" (15.537mm,13.046mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2762.593mil|Location2.X=2773.843mil|Location1.Y=2151.855mil|Location2.Y=2163.105mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2762.593mil|Location2.X=2773.843mil|Location1.Y=2151.855mil|Location2.Y=2163.105mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.174mm &lt; 0.254mm) Between Pad TP15-1(46mm,9.5mm) on TOP And Text "TP15" (41.251mm,9mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.174mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1821.147mil|Location2.X=1832.397mil|Location1.Y=2539.651mil|Location2.Y=2550.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1821.147mil|Location2.X=1832.397mil|Location1.Y=2539.651mil|Location2.Y=2550.901mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U2-1(21.9mm,19.8mm) on TOP And Track (12.3mm,19.15mm)(22mm,19.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2545.379mil|Location2.Y=2553.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2545.379mil|Location2.Y=2553.046mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-1(21.9mm,19.8mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2891.836mil|Location2.Y=2899.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2891.836mil|Location2.Y=2899.503mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-10(12.4mm,28.6mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1517.997mil|Location2.X=1529.247mil|Location1.Y=2921.54mil|Location2.Y=2932.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1517.997mil|Location2.X=1529.247mil|Location1.Y=2921.54mil|Location2.Y=2932.79mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U2-10(12.4mm,28.6mm) on TOP And Track (12.3mm,29.25mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2848.529mil|Location2.Y=2856.196mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2848.529mil|Location2.Y=2856.196mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-11(12.4mm,27.5mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2805.222mil|Location2.Y=2812.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2805.222mil|Location2.Y=2812.889mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-12(12.4mm,26.4mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2761.915mil|Location2.Y=2769.581mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2761.915mil|Location2.Y=2769.581mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-13(12.4mm,25.3mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2718.608mil|Location2.Y=2726.274mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2718.608mil|Location2.Y=2726.274mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-14(12.4mm,24.2mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2675.301mil|Location2.Y=2682.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2675.301mil|Location2.Y=2682.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-15(12.4mm,23.1mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2631.994mil|Location2.Y=2639.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2631.994mil|Location2.Y=2639.66mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-16(12.4mm,22mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2588.686mil|Location2.Y=2596.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2588.686mil|Location2.Y=2596.353mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-17(12.4mm,20.9mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2545.379mil|Location2.Y=2553.046mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1480.419mil|Location2.X=1488.085mil|Location1.Y=2545.379mil|Location2.Y=2553.046mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-18(12.4mm,19.8mm) on TOP And Track (12.3mm,19.15mm)(12.3mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1517.997mil|Location2.X=1529.247mil|Location1.Y=2539.651mil|Location2.Y=2550.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1517.997mil|Location2.X=1529.247mil|Location1.Y=2539.651mil|Location2.Y=2550.901mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U2-18(12.4mm,19.8mm) on TOP And Track (12.3mm,19.15mm)(22mm,19.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2588.686mil|Location2.Y=2596.353mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2588.686mil|Location2.Y=2596.353mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-2(21.9mm,20.9mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2631.994mil|Location2.Y=2639.66mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2631.994mil|Location2.Y=2639.66mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-3(21.9mm,22mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2675.301mil|Location2.Y=2682.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2675.301mil|Location2.Y=2682.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-4(21.9mm,23.1mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2718.608mil|Location2.Y=2726.274mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2718.608mil|Location2.Y=2726.274mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-5(21.9mm,24.2mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2761.915mil|Location2.Y=2769.581mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2761.915mil|Location2.Y=2769.581mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-6(21.9mm,25.3mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2805.222mil|Location2.Y=2812.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2805.222mil|Location2.Y=2812.889mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-7(21.9mm,26.4mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2848.529mil|Location2.Y=2856.196mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2848.529mil|Location2.Y=2856.196mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-8(21.9mm,27.5mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1821.147mil|Location2.X=1832.397mil|Location1.Y=2921.54mil|Location2.Y=2932.79mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1821.147mil|Location2.X=1832.397mil|Location1.Y=2921.54mil|Location2.Y=2932.79mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U2-9(21.9mm,28.6mm) on TOP And Track (12.3mm,29.25mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2891.836mil|Location2.Y=2899.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1862.309mil|Location2.X=1869.975mil|Location1.Y=2891.836mil|Location2.Y=2899.503mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad U2-9(21.9mm,28.6mm) on TOP And Track (22mm,19.15mm)(22mm,29.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3157.761mil|Location2.Y=3169.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3157.761mil|Location2.Y=3169.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U3-1(44.5mm,35.5mm) on TOP And Track (43.2mm,34.45mm)(43.2mm,41.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3248.312mil|Location2.Y=3259.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3248.312mil|Location2.Y=3259.562mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U3-2(44.5mm,37.8mm) on TOP And Track (43.2mm,34.45mm)(43.2mm,41.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3338.863mil|Location2.Y=3350.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2703.036mil|Location2.X=2714.286mil|Location1.Y=3338.863mil|Location2.Y=3350.113mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U3-3(44.5mm,40.1mm) on TOP And Track (43.2mm,34.45mm)(43.2mm,41.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2553.43mil|Location2.X=2564.68mil|Location1.Y=3203.036mil|Location2.Y=3214.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2553.43mil|Location2.X=2564.68mil|Location1.Y=3203.036mil|Location2.Y=3214.286mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad U3-4(38.5mm,37.8mm) on TOP And Track (39.8mm,34.45mm)(39.8mm,41.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDUNAVL2VPGOV5OGPUZCABFJIXPM51QRR12XZNK5MN5DIDIMIZCMPL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.866mil|Location2.X=1565.533mil|Location1.Y=2346.098mil|Location2.Y=2353.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1557.866mil|Location2.X=1565.533mil|Location1.Y=2346.098mil|Location2.Y=2353.764mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "MP1" (10.898mm,14.388mm) on Top Overlay And Text "R10" (15.537mm,13.046mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1957.436mil|Location2.X=1968.686mil|Location1.Y=3215.485mil|Location2.Y=3226.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1957.436mil|Location2.X=1968.686mil|Location1.Y=3215.485mil|Location2.Y=3226.735mil|Absolute=True">Silk To Silk Clearance Constraint: (0.105mm &lt; 0.254mm) Between Text "R13" (24.462mm,36.696mm) on Top Overlay And Text "TP17" (19.334mm,34.813mm) on Top Overlay Silk Text to Silk Clearance [0.105mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
