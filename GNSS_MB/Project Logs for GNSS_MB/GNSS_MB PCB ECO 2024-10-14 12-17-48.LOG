@@ -1,0 +1,51 @@
+Removed Pin From Net: NetName=SAFEBOOT_N Pin=TP21-1
+Removed Member From Class: ClassName=GNSS_MB Member=TP28
+Removed Member From Class: ClassName=RF Member=NetC9_1
+Change Component Designator: OldDesignator=R2 NewDesignator=R12
+Change Component Designator: OldDesignator=R3 NewDesignator=R13
+Change Component Designator: OldDesignator=R4 NewDesignator=R14
+Change Component Designator: OldDesignator=R5 NewDesignator=R15
+Change Component Designator: OldDesignator=R6 NewDesignator=R2
+Change Component Designator: OldDesignator=R7 NewDesignator=R3
+Change Component Designator: OldDesignator=R8 NewDesignator=R4
+Change Component Designator: OldDesignator=R9 NewDesignator=R5
+Change Component Designator: OldDesignator=R10 NewDesignator=R6
+Change Component Designator: OldDesignator=R11 NewDesignator=R7
+Change Component Designator: OldDesignator=R12 NewDesignator=R8
+Change Component Designator: OldDesignator=R13 NewDesignator=R9
+Change Component Designator: OldDesignator=R14 NewDesignator=R10
+Change Component Designator: OldDesignator=R15 NewDesignator=R11
+Change Component Designator: OldDesignator=TP1 NewDesignator=TP23
+Change Component Designator: OldDesignator=TP2 NewDesignator=TP1
+Change Component Designator: OldDesignator=TP3 NewDesignator=TP2
+Change Component Designator: OldDesignator=TP4 NewDesignator=TP3
+Change Component Designator: OldDesignator=TP5 NewDesignator=TP4
+Change Component Designator: OldDesignator=TP6 NewDesignator=TP5
+Change Component Designator: OldDesignator=TP7 NewDesignator=TP6
+Change Component Designator: OldDesignator=TP8 NewDesignator=TP7
+Change Component Designator: OldDesignator=TP9 NewDesignator=TP8
+Change Component Designator: OldDesignator=TP10 NewDesignator=TP9
+Change Component Designator: OldDesignator=TP11 NewDesignator=TP10
+Change Component Designator: OldDesignator=TP12 NewDesignator=TP11
+Change Component Designator: OldDesignator=TP13 NewDesignator=TP12
+Change Component Designator: OldDesignator=TP14 NewDesignator=TP13
+Change Component Designator: OldDesignator=TP15 NewDesignator=TP14
+Change Component Designator: OldDesignator=TP16 NewDesignator=TP15
+Change Component Designator: OldDesignator=TP17 NewDesignator=TP16
+Change Component Designator: OldDesignator=TP18 NewDesignator=TP17
+Change Component Designator: OldDesignator=TP19 NewDesignator=TP18
+Change Component Designator: OldDesignator=TP20 NewDesignator=TP19
+Change Component Designator: OldDesignator=TP22 NewDesignator=TP20
+Change Component Designator: OldDesignator=TP23 NewDesignator=TP21
+Change Component Designator: OldDesignator=TP24 NewDesignator=TP22
+Change Component Designator: OldDesignator=TP25 NewDesignator=TP24
+Change Component Designator: OldDesignator=TP26 NewDesignator=TP25
+Change Component Designator: OldDesignator=TP27 NewDesignator=TP26
+Change Component Designator: OldDesignator=TP28 NewDesignator=TP27
+Change Net Name : Old Net Name=NetR9_2 New Net Name=NetR5_2
+Change Net Name : Old Net Name=NetR11_2 New Net Name=NetR7_2
+Added Member To Class: ClassName=RF Member=Wire NetC5_1
+Added Rule: Name=Schematic Supply Nets_4
+Added Rule: Name=Schematic Supply Nets_5
+Added Rule: Name=Schematic Supply Nets_6
+Added Rule: Name=Schematic Supply Nets_7

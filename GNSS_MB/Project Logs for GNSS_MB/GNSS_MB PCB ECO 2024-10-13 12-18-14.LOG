@@ -1,0 +1,9 @@
+Add Pin To Net: Unknown Pin: Pin U2-18
+Added Class: Name=RF
+Added Differential Pair: Name=USBD2
+Added Differential Pair: Name=USBD
+Added Rule: Name=Schematic Supply Nets
+Added Rule: Name=Schematic Supply Nets_1
+Added Rule: Name=Schematic Supply Nets_2
+Added Rule: Name=Schematic Supply Nets_3
+Added Class: Name=USB

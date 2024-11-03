@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=SDA Pin=TP12-1
+Removed Pin From Net: NetName=SCL Pin=TP18-1
+Removed Member From Class: ClassName=GNSS_MB Member=TP12
+Removed Member From Class: ClassName=GNSS_MB Member=TP18

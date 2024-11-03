@@ -1,0 +1,20 @@
+Added Component: Designator=U2(MAX-M10M)
+Added Pin To Net: NetName=GND Pin=U2-1
+Added Pin To Net: NetName=TXD Pin=U2-2
+Added Pin To Net: NetName=RXD Pin=U2-3
+Added Pin To Net: NetName=T_PULSE Pin=U2-4
+Added Pin To Net: NetName=EXTINT Pin=U2-5
+Added Pin To Net: NetName=V_BKKP Pin=U2-6
+Added Pin To Net: NetName=VCC Pin=U2-7
+Added Pin To Net: NetName=VCC Pin=U2-8
+Added Pin To Net: NetName=GPS_RESET Pin=U2-9
+Added Pin To Net: NetName=GND Pin=U2-10
+Added Pin To Net: NetName=RF_IN Pin=U2-11
+Added Pin To Net: NetName=GND Pin=U2-12
+Added Pin To Net: NetName=LNA_EN Pin=U2-13
+Added Pin To Net: NetName=VCC_RF Pin=U2-14
+Added Pin To Net: NetName=VIO_SEL Pin=U2-15
+Added Pin To Net: NetName=SDA Pin=U2-16
+Added Pin To Net: NetName=SCL Pin=U2-17
+Added Pin To Net: NetName=SAFEBOOT_N Pin=U2-18
+Added Member To Class: ClassName=GNSS_MB Member=Component U2 MAX-M10M

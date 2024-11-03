@@ -1,0 +1,15 @@
+Removed Member From Class: ClassName=RF Member=NetC5_1
+Added Member To Class: ClassName=GNSS_MB Member=Component R6 RC0603JR-070RL
+Added Member To Class: ClassName=GNSS_MB Member=Component R7 RC0603JR-070RL
+Added Member To Class: ClassName=GNSS_MB Member=Component R9 RC0603JR-070RL
+Added Member To Class: ClassName=GNSS_MB Member=Component R10 RC0603JR-070RL
+Added Member To Class: ClassName=GNSS_MB Member=Component R11 RC0603JR-070RL
+Added Member To Class: ClassName=GNSS_MB Member=Component TP2 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP5 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP13 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP20 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP21 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP23 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP25 TEST_POINT
+Added Member To Class: ClassName=GNSS_MB Member=Component TP27 TEST_POINT
+Added Member To Class: ClassName=RF Member=Wire NetC9_1
