@@ -253,16 +253,16 @@ DocumentPath=Project Outputs for GNSS_MB\GNSS_MB.RUL
 DItemRevisionGUID=
 
 [Parameter1]
-Name=Title
-Value=IEEE GNSS Front End
+Name=Author
+Value=Michael Zheng
 
 [Parameter2]
 Name=Revision
 Value=V2
 
 [Parameter3]
-Name=Author
-Value=Michael Zheng
+Name=Title
+Value=IEEE GNSS Front End
 
 [Configuration1]
 Name=Sources
