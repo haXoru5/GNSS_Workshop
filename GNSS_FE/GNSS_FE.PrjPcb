@@ -172,23 +172,6 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ATUQOEYO
 
-[Document8]
-DocumentPath=GNSS_FE_PROD.PcbDoc
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=0
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-DocumentUniqueId=UKHSOHGA
-
 [ProjectVariant1]
 UniqueID=619FF363-A11B-49B1-99BA-F676B08E0984
 Description=Variant of GNSS_FE
