@@ -1,0 +1,36 @@
+Removed Member From Class: ClassName=RF Member=NetC7_1
+Removed Member From Class: ClassName=RF Member=NetC7_2
+Change Component Comment : Designator=R7 Old Comment= New Comment=RC0402FR-07357RL
+Change Component Comment : Designator=C3 Old Comment=GRM1555C1H102JA01D New Comment=GJM1555C1H1R5WB01D
+Change Component Comment : Designator=C7 Old Comment=GRM1555C1H102JA01D New Comment=GJM1555C1H8R1BB01D
+Change Component Comment : Designator=C4 Old Comment=GRM1555C1H102JA01D New Comment=GJM1555C1H470FB01D
+Change Component Comment : Designator=C2 Old Comment=GRM1555C1H102JA01D New Comment=GRM1555C1H182JA01D
+Change Component Comment : Designator=L1 Old Comment=LQW15AN3N6C10D New Comment=LQG15HN5N6C02D
+Change Component Comment : Designator=L2 Old Comment=LQW15AN3N6C10D New Comment=LQW15AN20NG8ZD
+Change Component Comment : Designator=R1 Old Comment=RC0402JR-070RL New Comment=RC0402FR-0710KL
+Change Component Designator: OldDesignator=C7 NewDesignator=C5
+Change Component Designator: OldDesignator=R5 NewDesignator=R3
+Change Component Designator: OldDesignator=R6 NewDesignator=R4
+Change Component Designator: OldDesignator=R7 NewDesignator=R5
+Change Component Designator: OldDesignator=R10 NewDesignator=R6
+Change Component Description : Designator=C3 Old Description=CAP CER 1000PF 50V C0G/NP0 0402 New Description=CAP CER 1.5PF 50V C0G/NP0 0402
+Change Component Description : Designator=C5 Old Description=CAP CER 1000PF 50V C0G/NP0 0402 New Description=CAP CER 8.1PF 50V C0G/NP0 0402
+
+Change Component Description : Designator=C4 Old Description=CAP CER 1000PF 50V C0G/NP0 0402 New Description=CAP CER 47PF 50V C0G/NP0 0402
+Change Component Description : Designator=C2 Old Description=CAP CER 1000PF 50V C0G/NP0 0402 New Description=CAP CER 1800PF 50V C0G/NP0 0402
+Change Component Description : Designator=R5 Old Description=Chip Resistor, 0 Ohm, +/- 5%, 0.1 W, -55 to 155 degC, 0603 (1608 Metric), RoHS, Tape and Reel New Description=RES 357 OHM 1% 1/16W 0402
+Change Component Description : Designator=L1 Old Description=FIXED IND 3.6NH 900MA 40 MOHM New Description=FIXED IND 5.6NH 600MA 0.18OHM SM
+Change Component Description : Designator=L2 Old Description=FIXED IND 3.6NH 900MA 40 MOHM New Description=FIXED IND 20NH 800MA 0.186OHM SM
+Change Component Description : Designator=R1 Old Description=RES 0 OHM JUMPER 1/16W 0402 New Description=RES 10K OHM 1% 1/16W 0402
+Change component parameters: Designator = "C4" ("C4"); Footprint = "0402_CAP"; UniqueID = "\FOZPMBII" ("\FOZPMBII")
+Change component parameters (AddParameter): Name = "Capacitance"; Value = "47pF"; VariantName = "[No Variations]"
+Added Component: Designator=C1(CAP_MURATA_0603)
+Add component (AddParameter): Name = "Capacitance"; Value = "0.1uF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C1-2
+Change Net Name : Old Net Name=NetC7_1 New Net Name=NetC5_1
+Change Net Name : Old Net Name=NetC7_2 New Net Name=NetC5_2
+Change Net Name : Old Net Name=NetR7_1 New Net Name=NetR5_1
+Added Member To Class: ClassName=GNSS_FE_PROD Member=Component C1 GCM188L81H104KA57D
+Added Member To Class: ClassName=RF Member=Wire NetC5_1
+Added Member To Class: ClassName=RF Member=Wire NetC5_2
