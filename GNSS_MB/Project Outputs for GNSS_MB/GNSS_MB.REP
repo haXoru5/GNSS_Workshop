@@ -2,28 +2,141 @@
 FileName = GNSS_MB.GBR
 AutoAperture = True
 *************************************************************
-Generating : Top Overlay
-      File : GNSS_MB.GTO
+Generating : Top Designator
+      File : GNSS_MB_Top_Designator.gbr
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : Top Designator
+
+
+Used DCodes :
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Top Component Center
+      File : GNSS_MB_Top_Component_Center.gbr
+
+    Adding Layer      : Top Component Center
+
+
+Used DCodes :
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 16
+      File : GNSS_MB_Mechanical_16.gbr
+
+    Adding Layer      : Mechanical 16
+
+
+Used DCodes :
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : GNSS_MB_Mechanical_15.gbr
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D16
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 14
+      File : GNSS_MB_Mechanical_14.gbr
+
+    Adding Layer      : Mechanical 14
+
+
+Used DCodes :
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : GNSS_MB_Mechanical_13.gbr
+
+    Adding Layer      : Mechanical 13
 
 
 Used DCodes :
     D10
-    D11
-    D12
-    D13
-    D14
     D15
     D16
-    D17
+    D74
 *************************************************************
 
 *************************************************************
-Generating : Top Solder
-      File : GNSS_MB.GTS
+Generating : Top Component Outline
+      File : GNSS_MB_Top_Component_Outline.gbr
 
-    Adding Layer      : Top Solder
+    Adding Layer      : Top Component Outline
+
+
+Used DCodes :
+    D10
+    D16
+*************************************************************
+
+*************************************************************
+Generating : Top 3D Body
+      File : GNSS_MB_Top_3D_Body.gbr
+
+    Adding Layer      : Top 3D Body
+
+
+Used DCodes :
+    D16
+*************************************************************
+
+*************************************************************
+Generating : Top Courtyard
+      File : GNSS_MB_Top_Courtyard.gbr
+
+    Adding Layer      : Top Courtyard
+
+
+Used DCodes :
+    D16
+    D73
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : GNSS_MB_Mechanical_1.gbr
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D13
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : GNSS_MB_Paste_Bot.gbr
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : GNSS_MB_Paste_Top.gbr
+
+    Adding Layer      : Top Paste
 
     Adding Layer      : TOP
 
@@ -49,91 +162,11 @@ Used DCodes :
     D33
     D34
     D35
-    D36
-    D37
-    D38
-    D39
-    D40
-    D41
-    D42
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : GNSS_MB.GBO
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-*************************************************************
-
-*************************************************************
-Generating : GND
-      File : GNSS_MB.G1
-
-    Adding Layer      : GND
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D66
-    D67
-    D68
-    D69
-    D70
-    D71
-    D72
-    D73
-*************************************************************
-
-*************************************************************
-Generating : BOTTOM
-      File : GNSS_MB.GBL
-
-    Adding Layer      : BOTTOM
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D13
-    D60
-    D66
-    D67
-    D68
-    D69
-    D70
-    D71
-    D72
-    D73
-*************************************************************
-
-*************************************************************
-Generating : POWER
-      File : GNSS_MB.G2
-
-    Adding Layer      : POWER
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D62
-    D66
-    D67
-    D68
-    D69
-    D70
-    D71
-    D72
-    D73
 *************************************************************
 
 *************************************************************
 Generating : Bottom Solder
-      File : GNSS_MB.GBS
+      File : GNSS_MB_Soldermask_Bot.gbr
 
     Adding Layer      : Bottom Solder
 
@@ -143,18 +176,20 @@ Generating : Bottom Solder
 
 
 Used DCodes :
-    D35
-    D37
-    D38
-    D39
-    D40
-    D41
     D42
+    D55
+    D56
+    D57
+    D58
+    D59
+    D60
 *************************************************************
 
 *************************************************************
-Generating : TOP
-      File : GNSS_MB.GTL
+Generating : Top Solder
+      File : GNSS_MB_Soldermask_Top.gbr
+
+    Adding Layer      : Top Solder
 
     Adding Layer      : TOP
 
@@ -162,7 +197,13 @@ Generating : TOP
 
 
 Used DCodes :
-    D13
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
     D43
     D44
     D45
@@ -181,6 +222,172 @@ Used DCodes :
     D58
     D59
     D60
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : GNSS_MB_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : GNSS_MB_Pads_Top.gbr
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D61
+    D66
+    D67
+    D68
+    D69
+    D70
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : GNSS_MB_Pads_Bot.gbr
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+    D66
+    D67
+    D68
+    D69
+    D70
+*************************************************************
+
+*************************************************************
+Generating : BOTTOM
+      File : GNSS_MB_Copper_Signal_Bot.gbr
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+    D60
+    D66
+    D67
+    D68
+    D69
+    D70
+    D71
+    D72
+*************************************************************
+
+*************************************************************
+Generating : POWER
+      File : GNSS_MB_Copper_Signal_2.gbr
+
+    Adding Layer      : POWER
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D60
+    D62
+    D66
+    D67
+    D68
+    D69
+    D70
+    D71
+    D72
+*************************************************************
+
+*************************************************************
+Generating : GND
+      File : GNSS_MB_Copper_Signal_1.gbr
+
+    Adding Layer      : GND
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D60
+    D66
+    D67
+    D68
+    D69
+    D70
+    D71
+    D72
+*************************************************************
+
+*************************************************************
+Generating : TOP
+      File : GNSS_MB_Copper_Signal_Top.gbr
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D13
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D60
     D61
     D62
     D63
@@ -193,15 +400,41 @@ Used DCodes :
     D70
     D71
     D72
-    D73
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : GNSS_MB_Drawing_1.gbr
+
+    Adding Drill Pair : TOP-BOTTOM
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D15
+    D75
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : GNSS_MB_Drillmap_1.gbr
+
+    Adding Drill Pair : TOP-BOTTOM
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D15
 *************************************************************
 
 *************************************************************
 Generating : Profile
-      File : GNSS_MB.GM
+      File : GNSS_MB_Profile.gbr
 
 
 Used DCodes :
-    D74
+    D76
 *************************************************************
 

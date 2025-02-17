@@ -3,11 +3,12 @@ Type  : NC Drill
 From  : Project [GNSS_MB.PrjPcb]
    Generated File[GNSS_MB-RoundHoles.TXT]
    Generated File[GNSS_MB-SlotHoles.TXT]
+   Generated File[GNSS_MB.DRL]
    Generated File[GNSS_MB.LDP]
    Generated File[GNSS_MB.DRR]
 
 
-Files Generated   : 4
+Files Generated   : 5
 Documents Printed : 0
 
-Finished Output Generation At 17:35:31 On 2024-10-20
+Finished Output Generation At 00:55:46 On 2025-02-17

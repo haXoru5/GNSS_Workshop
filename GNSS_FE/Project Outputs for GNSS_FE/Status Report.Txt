@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [GNSS_FE.PrjPcb]
+   Generated File[GNSS_FE.TXT]
+   Generated File[GNSS_FE.DRL]
+   Generated File[GNSS_FE.LDP]
+   Generated File[GNSS_FE.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 01:02:38 On 2025-02-17

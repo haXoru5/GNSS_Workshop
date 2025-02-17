@@ -1,0 +1,368 @@
+*************************************************************
+FileName = GNSS_FE_PROD.GBR
+AutoAperture = True
+*************************************************************
+Generating : GND2
+      File : GNSS_FE_PROD_Copper_Signal_2.gbr
+
+    Adding Layer      : GND2
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D41
+    D45
+    D46
+    D47
+*************************************************************
+
+*************************************************************
+Generating : BOTTOM
+      File : GNSS_FE_PROD_Copper_Signal_Bot.gbr
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+    D41
+    D45
+    D46
+    D47
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : GNSS_FE_PROD_Pads_Bot.gbr
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+    D45
+    D46
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : GNSS_FE_PROD_Pads_Top.gbr
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D45
+    D46
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : GNSS_FE_PROD_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : GNSS_FE_PROD_Legend_Bot.gbr
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D12
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : GNSS_FE_PROD_Soldermask_Top.gbr
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : GNSS_FE_PROD_Soldermask_Bot.gbr
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D35
+    D39
+    D40
+    D41
+    D42
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : GNSS_FE_PROD_Paste_Top.gbr
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : GNSS_FE_PROD_Paste_Bot.gbr
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : BOTTOM
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D23
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : GNSS_FE_PROD_Mechanical_1.gbr
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Top Designator
+      File : GNSS_FE_PROD_Top_Designator.gbr
+
+    Adding Layer      : Top Designator
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Top Courtyard
+      File : GNSS_FE_PROD_Top_Courtyard.gbr
+
+    Adding Layer      : Top Courtyard
+
+
+Used DCodes :
+    D13
+    D48
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 16
+      File : GNSS_FE_PROD_Mechanical_16.gbr
+
+    Adding Layer      : Mechanical 16
+
+
+Used DCodes :
+    D48
+*************************************************************
+
+*************************************************************
+Generating : GND1
+      File : GNSS_FE_PROD_Copper_Signal_1.gbr
+
+    Adding Layer      : GND1
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D41
+    D45
+    D46
+    D47
+*************************************************************
+
+*************************************************************
+Generating : TOP
+      File : GNSS_FE_PROD_Copper_Signal_Top.gbr
+
+    Adding Layer      : TOP
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D11
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D41
+    D43
+    D44
+    D45
+    D46
+    D47
+*************************************************************
+
+*************************************************************
+Generating : Top 3D Body
+      File : GNSS_FE_PROD_Top_3D_Body.gbr
+
+    Adding Layer      : Top 3D Body
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 13
+      File : GNSS_FE_PROD_Mechanical_13.gbr
+
+    Adding Layer      : Mechanical 13
+
+
+Used DCodes :
+    D12
+    D13
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 14
+      File : GNSS_FE_PROD_Mechanical_14.gbr
+
+    Adding Layer      : Mechanical 14
+
+
+Used DCodes :
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 15
+      File : GNSS_FE_PROD_Mechanical_15.gbr
+
+    Adding Layer      : Mechanical 15
+
+
+Used DCodes :
+    D13
+    D48
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : GNSS_FE_PROD_Drawing_1.gbr
+
+    Adding Drill Pair : TOP-BOTTOM
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D49
+    D50
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : GNSS_FE_PROD_Drillmap_1.gbr
+
+    Adding Drill Pair : TOP-BOTTOM
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Profile
+      File : GNSS_FE_PROD_Profile.gbr
+
+
+Used DCodes :
+    D51
+*************************************************************
+

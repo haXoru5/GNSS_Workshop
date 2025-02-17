@@ -1,17 +1,18 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: GNSS_FE.PcbDoc   2024-10-20  17:35:19
+NCDrill File Report For: GNSS_FE.PcbDoc   2025-02-17  01:02:38
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : TOP to BOTTOM
 ASCII RoundHoles File : GNSS_FE.TXT
+EIA File   : GNSS_FE.DRL
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      12mil (0.3mm)                                             Round             332       PTH        36.00inch (914.28mm)
-T2      28mil (0.711mm)                                           Round             2         PTH        0.63inch (16.00mm)
+T1      12mil (0.3mm)                                             Round             405       PTH        39.66inch (1007.28mm)
+T2      28mil (0.711mm)                                           Round             2         PTH        0.63inch (16.10mm)
 T3      37mil (0.95mm)                                            Round             1         PTH        0.00inch (0.00mm)
-T4      134mil (3.401mm)                                          Round             3         PTH        6.11inch (155.29mm)
+T4      134mil (3.401mm)                                          Round             3         PTH        6.19inch (157.28mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              338
+Totals                                                                              411
 
 Total Processing Time (hh:mm:ss) : 00:00:00

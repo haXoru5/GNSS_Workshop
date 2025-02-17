@@ -1,18 +1,33 @@
 ------------------------------------------------------------------------------------------
-Gerber File Extension Report For: GNSS_MB.GBR   2024-10-20  17:34:41
+Gerber File Extension Report For: GNSS_MB.GBR   2025-02-17  00:54:51
 ------------------------------------------------------------------------------------------
 
 
 ------------------------------------------------------------------------------------------
 Layer Extension     Layer Description                      
 ------------------------------------------------------------------------------------------
-.GTO                Top Overlay                             
-.GTS                Top Solder                              
-.GTL                TOP                                     
-.G1                 GND                                     
-.G2                 POWER                                   
-.GBL                BOTTOM                                  
-.GBS                Bottom Solder                           
-.GBO                Bottom Overlay                          
-.GM                 Profile                                 
+.gbr                Top Overlay                             
+.gbr                Top Paste                               
+.gbr                Top Solder                              
+.gbr                TOP                                     
+.gbr                GND                                     
+.gbr                POWER                                   
+.gbr                BOTTOM                                  
+.gbr                Bottom Solder                           
+.gbr                Bottom Paste                            
+.gbr                Mechanical 1                            
+.gbr                Top Courtyard                           
+.gbr                Top 3D Body                             
+.gbr                Top Component Outline                   
+.gbr                Mechanical 13                           
+.gbr                Mechanical 14                           
+.gbr                Mechanical 15                           
+.gbr                Mechanical 16                           
+.gbr                Top Component Center                    
+.gbr                Top Designator                          
+.gbr                Top Pad Master                          
+.gbr                Bottom Pad Master                       
+.gbr                Drill Drawing                           
+.gbr                Drill Guide                             
+.gbr                Profile                                 
 ------------------------------------------------------------------------------------------

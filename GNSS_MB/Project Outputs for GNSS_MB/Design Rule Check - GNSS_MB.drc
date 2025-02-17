@@ -1,10 +1,7 @@
 Protel Design System Design Rule Check
-PCB File : C:\Users\Michael\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc
-Date     : 11/02/2025
-Time     : 21:20:26
-
-Processing Rule : Clearance Constraint (Gap=0.127mm) (InNetClass('RF')),(All)
-Rule Violations :0
+PCB File : C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_MB\GNSS_MB.PcbDoc
+Date     : 2025-02-17
+Time     : 00:25:22
 
 Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
    Violation between Clearance Constraint: (0.15mm < 0.254mm) Between Pad J1-A1(47.35mm,24.525mm) on Multi-Layer And Pad J1-A4(47.35mm,25.375mm) on Multi-Layer 
@@ -31,6 +28,9 @@ Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
    Violation between Clearance Constraint: (0.15mm < 0.254mm) Between Region (0 hole(s)) TOP And Region (0 hole(s)) TOP 
 Rule Violations :22
 
+Processing Rule : Clearance Constraint (Gap=0.127mm) (InNetClass('RF')),(All)
+Rule Violations :0
+
 Processing Rule : Clearance Constraint (Gap=0.127mm) (InDifferentialPairClass('USB')),(All)
 Rule Violations :0
 
@@ -43,10 +43,10 @@ Rule Violations :0
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.18mm) (Max=0.228mm) (Preferred=0.228mm) (InNetClass('RF'))
+Processing Rule : Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)
+Processing Rule : Width Constraint (Min=0.18mm) (Max=0.228mm) (Preferred=0.228mm) (InNetClass('RF'))
 Rule Violations :0
 
 Processing Rule : Width Constraint (Min=0.254mm) (Max=0.5mm) (Preferred=0.5mm) (InNet('VCC') Or InNet('+5') Or InNet('VCCIO') Or InNet('NetC5_1'))
