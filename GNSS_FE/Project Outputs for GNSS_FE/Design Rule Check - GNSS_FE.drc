@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\micha\Documents\GitHub\GNSS_Workshop\GNSS_FE\GNSS_FE.PcbDoc
-Date     : 2025-02-17
-Time     : 00:28:16
+Date     : 2025-02-18
+Time     : 21:34:28
 
 Processing Rule : Clearance Constraint (Gap=0mm) ((OnLayer('Keep-Out Layer'))),(All)
 Rule Violations :0
@@ -84,4 +84,4 @@ Rule Violations :0
 
 Violations Detected : 21
 Waived Violations : 0
-Time Elapsed        : 00:00:00
+Time Elapsed        : 00:00:01
